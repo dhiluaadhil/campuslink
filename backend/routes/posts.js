@@ -49,7 +49,7 @@ router.post('/', authenticate, upload.single('image'), async (req, res) => {
 
     let imageUrl = null;
     if (req.file) {
-      imageUrl = await uploadToSupabase(req.file.buffer, req.file.originalname, 'posts');
+      imageUrl = await uploadToSupabase(req.file.buffer, req.file.originalname, 'posts', req.file.mimetype);
     }
 
     const postId = uuidv4();
